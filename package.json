@@ -1,0 +1,7 @@
+{
+	"name":"registration-page",
+	"vertion":"0.0.0",
+	"dependencies": {
+		"express": "^3.9.5"
+	}
+}
