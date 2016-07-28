@@ -1,9 +1,10 @@
 {
   "name": "registration-page",
-  "vertion": "0.0.0",
+  "version": "0.0.1",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.2",
-    "express": "^3.9.5",
+    "express": "^4.14.0",
     "jsonwebtoken": "^7.1.6",
     "mongoose": "^4.5.7",
     "morgan": "^1.7.0"
