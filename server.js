@@ -1,21 +1,20 @@
-var express     = require('express');
-var app         = express();
-var bodyParser  = require('body-parser');
-var morgan      = require('morgan');
-var mongoose    = require('mongoose');
+var express     = require('express'),
+    bodyParser  = require('body-parser'),
+	morgan      = require('morgan'),
+	mongoose    = require('mongoose'),
+	jwt         = require('jsonwebtoken'),
+	config      = require('./config'),
+	User        = require('./app/models/user');
 
-var jwt    = require('jsonwebtoken');
-var config = require('./config'); 
-var User   = require('./app/models/user');
+var app = express();
 
+mongoose.connect(config.database);
+app.set('superSecret', config.secret);
 
-//mongoose.connect(config.database);
-//app.set('superSecret', config.secret);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-//app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(bodyParser.json());
-
-//app.use(morgan('dev'));
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     res.end('ok');
