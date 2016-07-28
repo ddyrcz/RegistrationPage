@@ -1,4 +1,4 @@
 module.exports = {
     'secret':'webapp',
-    'database':'mongodb://localhost:27017/local'
+    'database':'mongodb://localhost:27017/page'
 }

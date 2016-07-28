@@ -20,6 +20,26 @@ app.get('/', (req, res) => {
     res.end('ok');
 });
 
+app.get('/users', (req, res) => {
+	User.find({}, (err, users) => {
+		res.json(users);
+	});
+});
+
+app.get('/setup', (req, res) => {
+	var user = new User({
+		name:'Dawid',
+		password:'dd'
+	 });
+
+	 user.save((err) => {
+		if(err){
+			console.log(err);
+		}
+		res.end('Created!');
+	});
+});
+
 
 app.listen(8000);
 console.log('service in running');
