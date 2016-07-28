@@ -20,11 +20,6 @@ app.get('/', (req, res) => {
     res.end('ok');
 });
 
-app.get('/users', (req, res) => {
-	User.find({}, (err, users) => {
-		res.json(users);
-	});
-});
 
 app.get('/setup', (req, res) => {
 	var user = new User({
@@ -64,6 +59,36 @@ app.post('/authenticate', (req, res) => {
 	});
 
 });
+
+
+var apiRouter = express.Router();
+
+apiRouter.use((req, res, next) => {
+	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+	if (token) {
+
+		jwt.verify(token, app.get('superSecret'), (err, decoded) => {
+			if (err) {
+				res.json({ message: 'token error' });
+			} else {
+				req.decoded = decoded;
+				next();
+			}
+		});
+
+	} else {
+		res.json({ message: 'token error' });
+	}
+});
+
+apiRouter.get('/users', (req, res) => {
+	User.find({}, (err, users) => {
+		res.json(users);
+	});
+});
+
+app.use('/api', apiRouter);
 
 app.listen(8000);
 console.log('service in running');
