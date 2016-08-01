@@ -11,8 +11,8 @@ router.get('/users', (req, res) => {
 
 router.post('/users', (req, res) => {
 	var user = new User({
-		name: 'Dawid',
-		password: 'dd'
+		name: req.body.name,
+		password: req.body.password
 	});
 
 	user.save((err) => {
