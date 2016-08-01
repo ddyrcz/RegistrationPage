@@ -7,19 +7,15 @@ var router = express.Router();
 var apiRouter = express.Router();
 
 router.post('/authenticate', (req, res) => {
-	User.findOne({ name: req.body.name }, (err, user) => {
+	User.findOne({ name: req.body.name, password: req.body.password }, (err, user) => {
 		if (err) {
 			console.log(err);
 		}
 		if (!user) {
 			res.json({ authenticated: false });
 		} else {
-			if (user.password != req.body.password) {
-				res.json({ authenticated: false });
-			} else {
-				var token = jwt.sign(user, config.secret);
-				res.json({ authenticated: true, token: token });
-			}
+			var token = jwt.sign(user, config.secret);
+			res.json({ authenticated: true, token: token });
 		}
 	});
 });
