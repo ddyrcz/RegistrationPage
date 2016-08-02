@@ -28,8 +28,8 @@ form{
     background-color: white;
 }
 
-#confirm{
-    width: 100%;
+#signin{
+    width: 50%;
     height: 40px;
     color: white;
     font-weight: bold;
@@ -37,8 +37,20 @@ form{
     
 }
 
-#confirm:hover{
+#signup{
+    width: 49%;
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    background-color: orangered;
+}
+
+#signin:hover{
     background-color: #2ba366;
+}
+
+#signup:hover{
+    background-color: #f04210;
 }
 
 input
