@@ -58,3 +58,15 @@ input
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
+#home{
+    left: 50%;
+    top: 50%;
+    width: 30%;
+    position: absolute;    
+    transform: translate3d(-50%, -50%, 0);
+    text-align: center;
+    color: white;
+    font-size: 42px;
+
+}

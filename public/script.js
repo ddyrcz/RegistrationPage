@@ -1,4 +1,4 @@
-$(document).ready(() => {    
+$(document).ready(() => {
 
     localStorage.removeItem('token');
 
@@ -9,13 +9,18 @@ $(document).ready(() => {
         }
         $.post('/authenticate',
             credentials,
-            (data, status) => {                
-                localStorage.token = data.token;                
+            (data, status) => {
+                if (data.authenticated) {
+                    console.log('authentication success')
+                    localStorage.token = data.token;
+                } else {
+                    console.log('authentication failed');
+                }
             });
         return false;
     });
 
-    $('#signup').click(() => {        
+    $('#signup').click(() => {
         $.get(`/api/users?token=${localStorage.token}`, (users, status) => {
             console.log(users);
         });
