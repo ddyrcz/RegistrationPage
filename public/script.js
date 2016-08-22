@@ -11,10 +11,12 @@ $(document).ready(() => {
             credentials,
             (data, status) => {
                 if (data.authenticated) {
-                    console.log('authentication success')
+                    console.log('authentication success');
                     localStorage.token = data.token;
+                    window.location = 'home.html';
                 } else {
                     console.log('authentication failed');
+                    $('#authenticationError').css('visibility', 'visible');
                 }
             });
         return false;

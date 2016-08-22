@@ -68,5 +68,11 @@ input
     text-align: center;
     color: white;
     font-size: 42px;
+}
 
+#authenticationError{
+    color: red;  
+    font-weight: bold;  
+    margin-left: 5px;
+    visibility: collapse;
 }
