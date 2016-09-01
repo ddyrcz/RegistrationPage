@@ -1,4 +1,8 @@
+const ENTER_KEY_CODE = 13;
+
 $(document).ready(() => {
+
+    handleKeydown();
 
     localStorage.removeItem('token');
 
@@ -13,6 +17,7 @@ $(document).ready(() => {
                 if (data.authenticated) {
                     console.log('authentication success');
                     localStorage.token = data.token;
+                    localStorage.login = credentials.name;
                     window.location = 'home.html';
                 } else {
                     console.log('authentication failed');
@@ -30,3 +35,11 @@ $(document).ready(() => {
     });
 
 });
+
+var handleKeydown = function () {
+    $(document).keydown((event) => {
+        if (event.keyCode == ENTER_KEY_CODE) {
+            $('#signin').click();
+        }
+    });
+}
