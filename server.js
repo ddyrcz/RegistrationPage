@@ -3,8 +3,8 @@ var express = require('express'),
 	morgan = require('morgan'),
 	mongoose = require('mongoose'),
 	config = require('config'),
-	userRouter = require('./lib/routers/users'),
-	commonRouter = require('./lib/routers/common');
+	userRouter = require('./lib/router/users'),
+	commonRouter = require('./lib/router/common');
 
 var app = express();
 
